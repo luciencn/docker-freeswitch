@@ -3,6 +3,11 @@
 FROM webitel/freeswitch-base
 LABEL maintainer="Vitaly Kovalyshyn"
 
+###
+### Overwrite sources.list with China Mirror
+###
+COPY 163.sources /etc/apt/sources.list
+
 RUN apt -y --quiet update && apt install -y --quiet freeswitch-meta-all \
     && cp -a /usr/share/freeswitch/conf/vanilla /etc/freeswitch \
     && rm -rf /usr/share/freeswitch/conf \
